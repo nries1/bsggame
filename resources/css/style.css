@@ -1,0 +1,29 @@
+#main-container {
+ display: flex; 
+}
+
+#good-guy-container {
+  margin-right: 20px;
+}
+
+.good-guy-cell {
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bad-guy-row {
+  display: flex;
+}
+
+.bad-card-class5, .bad-card-class6, .bad-card-class7, .bad-card-class8, .bad-card-class9 {
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
