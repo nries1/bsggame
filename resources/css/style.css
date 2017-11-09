@@ -1,29 +1,67 @@
-#main-container {
- display: flex; 
+#gameBoard {
+    width: 500px;
+    height: 500px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
 }
 
-#good-guy-container {
-  margin-right: 20px;
+#viporZone {
+    width: 12%;
+    height: 98%;
+    border: 1px solid green;
+    margin-top: 1%;
 }
 
-.good-guy-cell {
-  width: 50px;
-  height: 50px;
-  border: 1px solid black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+#vipor {
+    width:100%;
+    height: auto;
 }
 
-.bad-guy-row {
-  display: flex;
+.missiles {
+    visibility: hidden;
+    margin: 0;
+    padding: 0;
+    width: 40%;
+    height: auto;
 }
 
-.bad-card-class5, .bad-card-class6, .bad-card-class7, .bad-card-class8, .bad-card-class9 {
-  width: 50px;
-  height: 50px;
-  border: 1px solid black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+#raiderZone {
+    width: 60%;
+    height: 100%;
+    border-left: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+    background-color: black;
 }
+
+.raiderPath {
+    width: 100%;
+    height: 13%;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    background-color: white;
+    text-align: right;
+}
+
+.raiders {
+    height: 50%;
+    width: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.explosions {
+    height: 50%;
+    width: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+/*
+.raidersDivs {
+    height: 100%;
+    width: 32.5px;
+} */
