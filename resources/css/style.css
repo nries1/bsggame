@@ -43,7 +43,7 @@
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     background-color: white;
-    text-align: right;
+/*    text-align: right; */
 }
 
 .raiders {
@@ -60,11 +60,10 @@
     margin-bottom: 5%;
 }
 
-/*
+
 .raidersDivs {
-    height: 100%;
-    width: 32.5px;
-} */
+    position: relative;
+} 
 
 #endGameBox {
     font-size: 3rem;
