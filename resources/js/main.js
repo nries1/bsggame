@@ -27,11 +27,12 @@ function generateRaider() {
     } else {
      raiderNumber++;
      let raiderId = "raiderNo"+raiderNumber;
-     let raider = "<span class='raidersDivs' id='raiderDivNo'"+raiderNumber+"><img id="+raiderId+" class='raiders' src = './resources/images/raider.jpg'></span>"
+     let raiderDivId = "raiderDivNo"+raiderNumber;
+     let raider = "<span class='raidersDivs' id="+raiderDivId+"><img id="+raiderId+" class='raiders' src = './resources/images/raider.jpg'></span>"
      let raiderPath = getRandomRaiderPath(5);
      $(raiderPath).append(raider);
+     $("#"+raiderDivId).offset({left: 458});
      return raiderId;
-     console.log(raiderId);
     }
 };
 // End Generate Raider Function
@@ -64,7 +65,7 @@ function moveRaiders() {
         });
     };
     if (gameOver === false) {
-     setTimeout(moveRaiders,10);
+     setTimeout(moveRaiders,50);
     };
 };
 // End Move Raiders Function
