@@ -1,3 +1,13 @@
+// Wipe game board function
+function wipeGame() {
+   $("#gameBoard").css("display", "none");
+    let endGameBox = "<div id='endGameBox'>What the frack?<br>You killed "+raidersKilled+" raiders.<br><a href='./index.html'>Play again?</a></div>";
+   $("body").prepend(endGameBox);
+    gameWiped = true;
+};
+
+// End wipe game board function
+
 //All Raider Functions Here
 
 
@@ -12,29 +22,50 @@ function getRandomRaiderPath(numberOfPaths) {
 // Generate Raider Function
 let raiderNumber = 0;
 function generateRaider() {
-    raiderNumber++;
-    let raiderId = "raiderNo"+raiderNumber;
-    let raider = "<span class='raidersDivs'><img id="+raiderId+" class='raiders' src = './resources/images/raider.jpg'></span>"
-    let raiderPath = getRandomRaiderPath(5);
-    $(raiderPath).append(raider);
-    return raiderId;
-    console.log(raiderId);
+    if (gameOver) {
+        return;
+    } else {
+     raiderNumber++;
+     let raiderId = "raiderNo"+raiderNumber;
+     let raider = "<span class='raidersDivs' id='raiderDivNo'"+raiderNumber+"><img id="+raiderId+" class='raiders' src = './resources/images/raider.jpg'></span>"
+     let raiderPath = getRandomRaiderPath(5);
+     $(raiderPath).append(raider);
+     return raiderId;
+     console.log(raiderId);
+    }
 };
 // End Generate Raider Function
 
+let gameWiped = false;
 // Move Raiders Function
+let gameOver = false;
 function moveRaiders() {
+    if (gameOver) {
+        return;
+    } else {
     $(".raidersDivs").each(function() {
         let currentPositionObject = $(this).position();
         let currentDistanceFromLeft = Number(currentPositionObject.left);
-        $("#testOutput").text($(this).attr("id")+"  ||   "+currentDistanceFromLeft);
         let raiderStartPosition = currentDistanceFromLeft;
         if ($(this).position().left > 210) {
             newRaiderPosition = raiderStartPosition - 1;
             $(this).offset({left: newRaiderPosition});
+            } else
+            if ($(this).position().left <= 210) {
+             $(".raidersDivs").each(function() {
+              $(this).remove();
+             });
+             gameOver = true;
+             if (gameWiped === false) {
+               wipeGame();    
+             };
+             return;
             };
         });
-    setTimeout(moveRaiders,10);
+    };
+    if (gameOver === false) {
+     setTimeout(moveRaiders,10);
+    };
 };
 // End Move Raiders Function
 
@@ -75,6 +106,7 @@ function moveViporUp() {
 };
 // End Move Vipor Functions
 
+let raidersKilled = 0;
 // Fire Missile One Function
 let missileOneFired = false;
 function fireMissleOne() {
@@ -102,9 +134,8 @@ function fireMissleOne() {
     $(".raidersDivs").each(function() {
       if(Math.abs(Math.floor($(this).position().left) - Math.floor($("#firedMissile").position().left)) < 10 &&
          Math.abs(Math.floor($(this).position().top) - Math.floor($("#firedMissile").position().top)) < 50) {
-//         $(this).remove();
+         raidersKilled ++;
          $(this).html("<img class='explosions' src='./resources/images/explosion.png'>");
-//         setTimeOut($(this).remove(), 1000);
          hitRaider = true;
       };
     });
@@ -148,9 +179,8 @@ function fireMissileTwo() {
     $(".raidersDivs").each(function() {
       if(Math.abs(Math.floor($(this).position().left) - Math.floor($("#firedMissile2").position().left)) < 10 &&
          Math.abs(Math.floor($(this).position().top) - Math.floor($("#firedMissile2").position().top)) < 50) {
-//          $(this).remove();
+         raidersKilled ++;
          $(this).html("<img class='explosions' src='./resources/images/explosion.png'>");
-//         removeRaider($(this));
          hitRaider = true;
       };
     });
@@ -194,9 +224,8 @@ function fireMissileThree() {
     $(".raidersDivs").each(function() {
       if(Math.abs(Math.floor($(this).position().left) - Math.floor($("#firedMissile3").position().left)) < 10 &&
          Math.abs(Math.floor($(this).position().top) - Math.floor($("#firedMissile3").position().top)) < 50) {
-//         $(this).remove();
+         raidersKilled ++;
          $(this).html("<img class='explosions' src='./resources/images/explosion.png'>");
-//         removeRaider($(this));
          hitRaider = true;
       };
     });
