@@ -65,3 +65,10 @@
     height: 100%;
     width: 32.5px;
 } */
+
+#endGameBox {
+    font-size: 3rem;
+    font-family: "Courier New";
+    background-color: blueviolet;
+    color: white;
+}
